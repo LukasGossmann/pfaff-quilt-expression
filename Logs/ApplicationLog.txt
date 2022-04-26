@@ -1,0 +1,4 @@
+[12:53:42] [5][0x10][0][-] - [Source/Generated/SLImpLinuxCmp/SMStartUpModeAppNodeTarget.cpp][79] DoInit() [Startupmode 0]
+[12:53:42] [5][0x10][1][-] - [Source/Generated/SLImpLinuxCmp/SMStartUpModeAppNodeTarget.cpp][80] DoInit() [Usermode 0]
+Main node created!
+[12:54:12] [6][0x10][2][-] - [Source/Generated/CDLImpMainNodeCommonLinuxCmp/GFS_SBM_LinuxConfig.cpp][72] AutoMount() [AutoMount Linux:/F/mnt/sda1/]

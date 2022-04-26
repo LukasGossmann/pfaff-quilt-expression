@@ -6,7 +6,8 @@ Information about the software running on PFAFF® quilt expression™ sewing mac
 ## Disclaimer
 All the information in this repository should only be used on your own risk.
 If you damage or brick your sewing machine in any way i am **not** responsible.
-The information below have been extracted from the scripts i was able to find in the UBIFS and most of the steps on how to get into the machine have not yet been verified because I'm waiting for the network adapter to arrive.
+The information below have been extracted from the scripts i was able to find in the UBIFS of the firmware update image.
+Opening or modifiying the hardware of the sewing machine is not needed.
 
 ## Where to get the firmware
 
@@ -29,7 +30,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 5775876       0x582204        UBIFS filesystem superblock node, CRC: 0x42918221, flags: 0x0, min I/O unit size: 2048, erase block size: 126976, erase block count: 178, max erase blocks: 2048, format version: 4, compression type: lzo
 5902852       0x5A1204        UBIFS filesystem master node, CRC: 0xA0C8E616, highest inode: 1954, commit number: 0
 6029828       0x5C0204        UBIFS filesystem master node, CRC: 0xACF8130B, highest inode: 1954, commit number: 0
-other stuff inside the ubi fs image....
+other stuff inside the UBIFS image....
 ```
 
 ## Extracting the UBIFS
@@ -59,11 +60,11 @@ UBIFS Fatal: Super block error: Bad Read Offset Request
 
 This error occurs due to the start and end offset parameters not working properly.
 To get around this error we simply have to split out the UBIFS part of the firmware image before trying to extract it.
-To do this use the following command:
+Replace `UBI_File Start Offset` with the start offset that was printed in the error message (5775876 in this example).
 ```
 $ dd if=quilt_expression_720.clo of=quilt_expression_720.ubifs skip=<UBI_File Start Offset> iflag=skip_bytes
 ```
-Replace `UBI_File Start Offset` with the start offset that was printed in the error message (5775876 in this example).
+
 Now the UBIFS can hopefully be extracted without any errors using this command:
 
 ```
@@ -74,7 +75,8 @@ By default ubireader creates a directory called `ubifs-root` into which the file
 
 ## Extracting the zImage
 
-TODO: describe how to find these offsets
+To find the offset where the zImage starts I originally used binwalk. (See command output at the start of this document)
+However the start offset can probably also be found by looking for some kind of magic number at the start of the gzip compressed (not tested).
 
 ```
 $ dd if=quilt_expression_720.clo of=gzipData skip=12725 count=5763151 iflag=skip_bytes,count_bytes
@@ -137,15 +139,18 @@ ubifs-root/etc/usb_scripts.d/vsm_application-config-overrides.sh
 
 ## The hardware and software
 
-This section is still work in progress due to missing some hardware (more on that later) to be able to SSH into the machine.
+Main processor: i.MX23 (ARM926EJ-S)  
+RAM: 63MB  
+Flash: 256MiB NAND flash made by Hynix  
 
-The main processor is the ARM926EJ-S processor and (currently unknown) amount of RAM.  
-The co-processor is an STM32 (specific model unknown) conntected to the main processor on /dev/ttySP1.
+Co-processor: unknown STM32  
+ - Attached to the main processor on /dev/ttySP1 @ 115200 baud  
 
 ```
 Linux version 2.6.31.6-rt19-626-g602af1c-dirty (jenkins@sehvavm004) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-202) ) #2 PREEMPT RT Fri Aug 3 15:27:14 CEST 2018
 ```
-Supported network adapters (maybe others ?):
+Network adapters supported by `asix.ko`:
+The C version of the AX88772 works as well.
 ```
 ASIX AX88178 USB 2.0 Ethernet
 ASIX AX8817x USB 2.0 Ethernet
@@ -168,15 +173,19 @@ GPIOs used (maybe more):
 
 ## Enabling SSH and dumping log files
 
-To do this a special USB stick needs to be prepared that when automounted triggers the scripts made by PFAFF to start the SSH daemon and copy the log files.
-A ready made zip file containing all the files and directories can be found in this repository (TODO).
-The usb drive should be FAT32 formatted and the zip file extracted onto the root directory of the drive.
-It is possible to change the IP address and ssh password of the sewing machine by editing the files of the usb drive.
-See the next section on what to modify.
+To do this a special USB stick needs to be prepared that when automounted triggers the scripts made by PFAFF which starts the SSH daemon and copies the log files.
+The folder `usb_drive` contains all files that are needed.
+Just copy the contents of that folder to a FAT32 formatted usb drive and everything is ready to go.
+The provided files will:
+ - Dump the logs
+ - Enable SSH (IP and password can be changed in `vsm_request_network_support.txt`, user is root)
+ - Restart the application in "Service Lab" mode
 
-TODO:
-Figure out how to trigger debug mode.
-Debug mode is enabled when the directories /mnt/system/vsm_develop_and_debug or /tmp/vsm_develop_and_debug are present
+Now the machine can be turned on (with nothing plugged into the usb port).
+Wait for the machine to boot.
+Next connect the network adapter and the usb drive to a usb hub and connect that to the machine.
+After a few seconds drive access indicator light on the usb stick will start to flash.
+Shortly after the SSH daemon will be started and after that the software will restart in Service Lab mode.
 
 ## How does it work ?
 
@@ -187,7 +196,7 @@ The files involved in detecting this usb drive are:
 
 - `ubifs-root/lib/mdev/vsm_quirks_mounter.sh` and `ubifs-root/lib/mdev/vsm_automounter.sh`
   - These scripts get triggered by mdev after a drive is inserted.
-  - They mount the drive, make sure that there isnt currently an update and progress and then trigger more scripts
+  - They mount the drive, make sure that there isnt currently an update in progress and then trigger more scripts
 - `ubifs-root/lib/mdev/vsm_load_lgpl_libraries.sh`
   - Gets triggered by the mounter scripts above
   - Copies all *.so files from the `vsm_opensource_libs` directory on the usb drive to `/mnt/user/vsm_opensource_libs`
@@ -226,26 +235,24 @@ The files involved in detecting this usb drive are:
             uptime.txt
             meminfo.txt
             diskusage.txt
-    StartInServiceL.suf
-    StartInServiceP.suf
-    StartInService.suf
-    StartInProduction1.suf
-    StartInProduction2.suf
+StartInServiceL.suf
+StartInServiceP.suf
+StartInService.suf
+StartInProduction1.suf
+StartInProduction2.suf
 ```
 
-Only one of the StartIn*.suf files can be present!
+Only one of the StartIn*.suf files can be present at once!
 Logs folder is created when vsm_request_logs.txt triggers its associated script.
 
-#### vsm_request_network_support.txt and /usr/bin/vsm_setup_usbnwk_support
-
-The .txt file contains 3 lines.
-1: ip address
-2: ssh pasword
-3: yes or no if the application should be restarted or not
-
+### vsm_request_network_support.txt and /usr/bin/vsm_setup_usbnwk_support
 **Warning!** This will remount the rootfs read write for a short moment.
 
-Example: (TODO: verify is this works)
+The .txt file contains 3 lines.  
+1: ip address  
+2: ssh pasword  
+3: yes or no if the application should be restarted or not  
+
 ```
 192.168.99.123
 SomePassword

@@ -1,0 +1,36 @@
+---
+component: system
+build_url: http://jenkins/job/APF498/21/
+repo_url: http://swrepos.cd.corp/system-builders
+changeset_id: 753bf9d5fa87365b1b4cac8aea72d56976a0b19a
+
+---
+component: application
+build_url: http://jenkins/job/claudius-application-dev/128
+repo_url: http://swrepos/claudius/claudius-application
+changeset_id: edbc2717b5880ffa2d104efbc57cc4b0c49a73e1
+
+---
+component: kernel
+build_url: http://jenkins/job/linux-kernel/236
+repo_url: http://swrepos/linux
+changeset_id: 87adfc623f71061eb76535f502847c2e1a6ec1e9
+
+---
+component: rootfs
+build_url: http://jenkins/job/ChameleonMidRootFS/706
+repo_url: http://swrepos.cd.corp/buildroot
+changeset_id: c59451d8f534a8d83a71fd85a675b4cbebd8f936
+
+---
+component: bootloader
+build_url: http://jenkins/job/Barebox/517
+repo_url: http://swrepos.cd.corp/barebox
+changeset_id: a5019c8809ec1b5cfbb749146b0e54afd7a392b8
+
+---
+component: update-system
+build_url: http://jenkins/job/ChameleonMidRootFS-Update/294
+repo_url: http://swrepos.cd.corp/buildroot
+changeset_id: 38e0901b758bbb084be5228031be5ed720fb318b
+

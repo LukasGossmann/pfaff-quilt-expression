@@ -1,0 +1,440 @@
+********************
+Version info
+---
+component: system
+build_url: http://jenkins/job/APF498/21/
+repo_url: http://swrepos.cd.corp/system-builders
+changeset_id: 753bf9d5fa87365b1b4cac8aea72d56976a0b19a
+
+---
+component: application
+build_url: http://jenkins/job/claudius-application-dev/128
+repo_url: http://swrepos/claudius/claudius-application
+changeset_id: edbc2717b5880ffa2d104efbc57cc4b0c49a73e1
+
+---
+component: kernel
+build_url: http://jenkins/job/linux-kernel/236
+repo_url: http://swrepos/linux
+changeset_id: 87adfc623f71061eb76535f502847c2e1a6ec1e9
+
+---
+component: rootfs
+build_url: http://jenkins/job/ChameleonMidRootFS/706
+repo_url: http://swrepos.cd.corp/buildroot
+changeset_id: c59451d8f534a8d83a71fd85a675b4cbebd8f936
+
+---
+component: bootloader
+build_url: http://jenkins/job/Barebox/517
+repo_url: http://swrepos.cd.corp/barebox
+changeset_id: a5019c8809ec1b5cfbb749146b0e54afd7a392b8
+
+---
+component: update-system
+build_url: http://jenkins/job/ChameleonMidRootFS-Update/294
+repo_url: http://swrepos.cd.corp/buildroot
+changeset_id: 38e0901b758bbb084be5228031be5ed720fb318b
+
+System version: release-19 (2018-11-22)
+********************
+Product: APF498
+********************
+Build Numbers
+Main Node: 345 
+Sub Node: 641 
+********************
+Uptime:  12:58:59 up 5 min,  load average: 0.19, 0.23, 0.10
+********************
+Memory Info:
+MemTotal:          60624 kB
+MemFree:           29844 kB
+Buffers:            3716 kB
+Cached:            17592 kB
+SwapCached:            0 kB
+Active:            17164 kB
+Inactive:           5408 kB
+Active(anon):       1292 kB
+Inactive(anon):        0 kB
+Active(file):      15872 kB
+Inactive(file):     5408 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:          1272 kB
+Mapped:             2288 kB
+Slab:               5256 kB
+SReclaimable:       2704 kB
+SUnreclaim:         2552 kB
+PageTables:          128 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:       30312 kB
+Committed_AS:       5428 kB
+VmallocTotal:     720896 kB
+VmallocUsed:        2912 kB
+VmallocChunk:     716236 kB
+********************
+Disk usage:
+Filesystem                Size      Used Available Use% Mounted on
+ubi0:rootfs              90.6M     19.3M     71.3M  21% /
+none                     29.6M         0     29.6M   0% /mnt
+tmpfs                    29.6M     20.0K     29.6M   0% /tmp
+ubi0:pmm                  7.6M     64.0K      7.1M   1% /mnt/persistent
+ubi0:user                12.2M     48.0K     11.5M   0% /mnt/user
+ubi0:rootfs              90.6M     19.3M     71.3M  21% /mnt/system
+tmpfs                    29.6M      4.0K     29.6M   0% /dev
+/dev/sda1                 3.6G     52.0K      3.6G   0% /mnt/sda1
+********************
+Linux Kernel:
+Linux buildroot 2.6.31.6-rt19-626-g602af1c #1 PREEMPT RT Tue Nov 13 12:53:39 CET 2018 armv5tejl GNU/Linux
+********************
+Cmdline:
+console=ttyAM0,115200 lcd_panel=hx8238a mem=63M consoleblank=0 rootfstype=ubifs root=ubi0:rootfs ubi.mtd=system quiet lpj=1134592 bb_v=2012.09.0v1.0-dirty blt_v=1.1=
+********************
+Kernel Message Log:
+Linux version 2.6.31.6-rt19-626-g602af1c (jenkins@sehvavm004) (gcc version 4.8.3 20140320 (prerelease) (Sourcery CodeBench Lite 2014.05-29) ) #1 PREEMPT RT Tue Nov 13 12:53:39 CET 2018
+CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=00053177
+CPU: VIVT data cache, VIVT instruction cache
+Machine: Freescale MX23EVK board
+Memory policy: ECC disabled, Data cache writeback
+On node 0 totalpages: 16128
+free_area_init_node: node 0, pgdat c033ae44, node_mem_map c0356000
+  DMA zone: 24 pages used for memmap
+  DMA zone: 0 pages reserved
+  DMA zone: 3048 pages, LIFO batch:0
+  Normal zone: 102 pages used for memmap
+  Normal zone: 12954 pages, LIFO batch:3
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16002
+Kernel command line: console=ttyAM0,115200 lcd_panel=hx8238a mem=63M consoleblank=0 rootfstype=ubifs root=ubi0:rootfs ubi.mtd=system quiet lpj=1134592 bb_v=2012.09.0v1.0-dirty blt_v=1.1=
+PID hash table entries: 256 (order: 8, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 63MB = 63MB total
+Memory: 60464KB available (2932K code, 266K data, 92K init, 0K highmem)
+Real-Time Preemption Support (C) 2004-2007 Ingo Molnar
+Preemptible RCU implementation.
+NR_IRQS:224
+Console: colour dummy device 80x30
+console [ttyAM0] enabled
+Calibrating delay loop (skipped) preset value.. 226.91 BogoMIPS (lpj=1134592)
+Security Framework initialized
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+regulator: core version 0.5
+NET: Registered protocol family 16
+regulator: vddd: 800 <--> 1575 mV fast normal 
+regulator: vddd_bo: 800 <--> 1575 mV fast normal 
+regulator: vdda: 1500 <--> 2275 mV fast normal 
+regulator: vddio: 2800 <--> 3575 mV fast normal 
+regulator: overall_current: 0 <--> 2147483 mA fast normal 
+regulator: mxs-duart-1: 0 <--> 2147483 mA fast normal 
+regulator: mxs-bl-1: 0 <--> 2147483 mA fast normal 
+regulator: mxs-i2c-1: 0 <--> 2147483 mA fast normal 
+regulator: mmc_ssp-1: 0 <--> 2147483 mA fast normal 
+regulator: mmc_ssp-2: 0 <--> 2147483 mA fast normal 
+regulator: charger-1: 0 <--> 2147483 mA fast normal 
+regulator: power-test-1: 0 <--> 2147483 mA fast normal 
+regulator: cpufreq-1: 0 <--> 2147483 mA fast normal 
+i.MX IRAM pool: 28 KB@0xc4008000
+bio: create slab <bio-0> at 0
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 3, 57344 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+NET: Registered protocol family 1
+Bus freq driver module loaded
+mxs_cpu_init: cpufreq init finished
+msgmni has been set to 118
+alg: No test for stdrng (krng)
+cryptodev: driver loaded.
+io scheduler noop registered
+io scheduler anticipatory registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+Console: switching to colour frame buffer device 40x30
+mxs-duart.0: ttyAM0 at MMIO 0x80070000 (irq = 0) is a DebugUART
+mxs-auart.1: ttySP1 at MMIO 0x8006c000 (irq = 24) is a mxs-auart.1
+Found APPUART 3.0.0
+brd: module loaded
+loop: module loaded
+at24 0-00ae: 8192 byte at24 EEPROM (writable)
+i.MX GPMI NFC
+Setting prio for: GPMI NFC BCH Interrupt,56 to: 7
+NFC: Version 0, 4-chip GPMI and BCH
+Setting timing Erik style
+Boot ROM: Version 0, Single/dual-chip boot area, no block mark swapping
+Scanning for NAND Flash chips...
+Setting prio for: GPMI NFC DMA Interrupt,13 to: 7
+We have busw: 0
+OOB Size: 64
+WR  Size: 2048
+ER  Size: 131072
+NAND device: Manufacturer ID: 0xad, Chip ID: 0xda (Hynix NAND 256MiB 3,3V 8-bit)
+We are using id: ad 173
+Man: ad Dev: da
+-----------------------------
+NAND Flash Device Information
+-----------------------------
+Manufacturer      : Hynix (0xad)
+Device Code       : 0xda
+Cell Technology   : SLC
+Chip Size         : 256 MiB
+Pages per Block   : 64
+Page Geometry     : 2048+64
+ECC Strength      : 4 bits
+ECC Size          : 512 B
+Data Setup Time   : 30 ns
+Data Hold Time    : 25 ns
+Address Setup Time: 10 ns
+GPMI Sample Delay : 6 ns
+tREA              : Unknown
+tRLOH             : Unknown
+tRHOH             : Unknown
+Description       : HY27UF082G2M, HY27UG082G2M, HY27UG082G1M
+-----------------
+Physical Geometry
+-----------------
+Chip Count             : 1
+Page Data Size in Bytes: 2048 (0x800)
+Page OOB Size in Bytes : 64
+Block Size in Bytes    : 131072 (0x20000)
+Block Size in Pages    : 64 (0x40)
+Chip Size in Bytes     : 268435456 (0x10000000)
+Chip Size in Pages     : 131072 (0x20000)
+Chip Size in Blocks    : 2048 (0x800)
+Medium Size in Bytes   : 268435456 (0x10000000)
+Block count: 3
+Block size: 512
+Meta data size: 10
+ECC strength: 2
+Page size: 2112
+------------
+NFC Geometry
+------------
+ECC Algorithm          : BCH
+ECC Strength           : 4
+Page Size in Bytes     : 2112
+Metadata Size in Bytes : 10
+ECC Chunk Size in Bytes: 512
+ECC Chunk Count        : 4
+Payload Size in Bytes  : 2048
+Auxiliary Size in Bytes: 16
+Auxiliary Status Offset: 12
+Block Mark Byte Offset : 0
+Block Mark Bit Offset  : 0
+-----------------
+Boot ROM Geometry
+-----------------
+Boot Area Count            : 1
+Boot Area Size in Bytes    : 41943040 (0x2800000)
+Stride Size in Pages       : 64
+Search Area Stride Exponent: 2
+Scanning for an NCB fingerprint...
+  Looking for a fingerprint in page 0x0
+  Found a fingerprint
+Scanning device for bad blocks
+Boot area protection is enabled.
+Creating 2 MTD partitions on "gpmi-nfc-main":
+0x000000000000-0x000002800000 : "gpmi-nfc-0-boot"
+0x000002800000-0x000010000000 : "gpmi-nfc-general-use"
+Setting mil partitions to pdata partitions
+Creating 2 MTD partitions on "gpmi-nfc-general-use":
+0x000000000000-0x000003c00000 : "kernel"
+0x000003c00000-0x00000d800000 : "system"
+gpmi_nfc_probe:1254: MIL: fde03000
+UBI: attaching mtd3 to ubi0
+UBI: physical eraseblock size:   131072 bytes (128 KiB)
+UBI: logical eraseblock size:    126976 bytes
+UBI: smallest flash I/O unit:    2048
+UBI: VID header offset:          2048 (aligned 2048)
+UBI: data offset:                4096
+UBI: attached mtd3 to ubi0
+UBI: MTD device name:            "system"
+UBI: MTD device size:            156 MiB
+UBI: number of good PEBs:        1248
+UBI: number of bad PEBs:         0
+UBI: max. allowed volumes:       128
+UBI: wear-leveling threshold:    4096
+UBI: number of internal volumes: 1
+UBI: number of user volumes:     3
+UBI: available PEBs:             199
+UBI: total number of reserved PEBs: 1049
+UBI: number of PEBs reserved for bad PEB handling: 12
+UBI: max/mean erase counter: 4/1
+UBI: image sequence number: 0
+UBI: background thread "ubi_bgt0d" started, PID 342
+ ubiblka: unknown partition table
+ ubiblkb: unknown partition table
+ ubiblkc: unknown partition table
+usbmon: debugfs is not available
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+fsl-ehci fsl-ehci: Freescale On-Chip EHCI Host Controller
+fsl-ehci fsl-ehci: new USB bus registered, assigned bus number 1
+Setting prio for: ehci_hcd:usb1,11 to: 7
+fsl-ehci fsl-ehci: irq 11, io base 0x80080000
+fsl-ehci fsl-ehci: USB 2.0 started, EHCI 1.00
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+mice: PS/2 mouse device common for all mice
+input: MXS touchscreen as /class/input/input0
+i2c /dev entries driver
+Advanced Linux Sound Architecture Driver Version 1.0.20.
+mxs-adc-audio mxs-adc-audio.0: MXS ADC/DAC Audio Codec 
+No device for DAI mxs adc/dac
+No device for DAI mxs adc/dac
+asoc: mxs adc/dac <-> mxs adc/dac mapping ok
+ALSA device list:
+  #0: MXS EVK (mxs adc/dac)
+TCP cubic registered
+Setting prio for: pswitch,3 to: 0
+UBIFS: mounted UBI device 0, volume 0, name "rootfs"
+UBIFS: file system size:   103485440 bytes (101060 KiB, 98 MiB, 815 LEBs)
+UBIFS: journal size:       9023488 bytes (8812 KiB, 8 MiB, 72 LEBs)
+UBIFS: media format:       w4/r0 (latest is w4/r0)
+UBIFS: default compressor: lzo
+UBIFS: reserved for root:  0 bytes (0 KiB)
+VFS: Mounted root (ubifs filesystem) on device 0:10.
+Freeing init memory: 92K
+UBIFS: recovery needed
+UBIFS: recovery completed
+UBIFS: mounted UBI device 0, volume 1, name "pmm"
+UBIFS: file system size:   9396224 bytes (9176 KiB, 8 MiB, 74 LEBs)
+UBIFS: journal size:       1015809 bytes (992 KiB, 0 MiB, 6 LEBs)
+UBIFS: media format:       w4/r0 (latest is w4/r0)
+UBIFS: default compressor: lzo
+UBIFS: reserved for root:  443806 bytes (433 KiB)
+UBIFS: mounted UBI device 0, volume 2, name "user"
+UBIFS: file system size:   14602240 bytes (14260 KiB, 13 MiB, 115 LEBs)
+UBIFS: journal size:       1015809 bytes (992 KiB, 0 MiB, 6 LEBs)
+UBIFS: media format:       w4/r0 (latest is w4/r0)
+UBIFS: default compressor: lzo
+UBIFS: reserved for root:  689699 bytes (673 KiB)
+input: VSMSewHeadKbd as /class/input/input1
+IRQ 4/MXS DAC/ADC HP SHORT: IRQF_DISABLED is not guaranteed on shared IRQs
+Setting prio for: MXS DAC/ADC Error,6 to: 7
+Setting prio for: MXS DAC/ADC HP SHORT,4 to: 7
+Setting prio for: MXS PCM DMA,5 to: 15
+usb 1-1: new high speed USB device using fsl-ehci and address 2
+usb 1-1: configuration #1 chosen from 1 choice
+hub 1-1:1.0: USB hub found
+hub 1-1:1.0: 4 ports detected
+usb 1-1.1: new high speed USB device using fsl-ehci and address 3
+usb 1-1.1: configuration #1 chosen from 1 choice
+scsi0 : SCSI emulation for USB Mass Storage devices
+usb-storage: device found at 3
+usb-storage: waiting for device to settle before scanning
+usb 1-1.4: new high speed USB device using fsl-ehci and address 4
+usb 1-1.4: configuration #1 chosen from 1 choice
+scsi 0:0:0:0: Direct-Access                                    PQ: 0 ANSI: 0 CCS
+sd 0:0:0:0: [sda] 7577600 512-byte logical blocks: (3.87 GB/3.61 GiB)
+sd 0:0:0:0: [sda] Write Protect is off
+sd 0:0:0:0: [sda] Mode Sense: 43 00 00 00
+sd 0:0:0:0: [sda] Assuming drive cache: write through
+sd 0:0:0:0: [sda] Assuming drive cache: write through
+ sda: sda1
+usb-storage: device scan complete
+sd 0:0:0:0: [sda] Assuming drive cache: write through
+sd 0:0:0:0: [sda] Attached SCSI removable disk
+ASIX USB Ethernet Adapter:v4.2.0 12:53:41 Nov 13 2018
+<6>    http://www.asix.com.tw
+eth%d: status ep1in, 8 bytes period 11
+eth0: register 'asix' at usb-fsl-ehci-1.4, ASIX AX88772B USB 2.0 Ethernet, 6c:f0:49:6c:67:ac
+usbcore: registered new interface driver asix
+eth0: rxqlen 0 --> 5
+eth0: rxqlen 4 --> 5
+eth0: ax88772b - Link status is: 0
+eth0: ax88772b - Link status is: 1
+IRQ 4/MXS DAC/ADC HP SHORT: IRQF_DISABLED is not guaranteed on shared IRQs
+Setting prio for: MXS DAC/ADC Error,6 to: 7
+Setting prio for: MXS DAC/ADC HP SHORT,4 to: 7
+Setting prio for: MXS PCM DMA,5 to: 15
+********************
+Application Error Log:
+[12:54:31] [6][0x10][0][CDL_Common] - [Source/Generated/CDLImpMainNodeCommonLinuxCmp/GFS_SBM_LinuxConfig.cpp][72] AutoMount() [AutoMount Linux:/F/mnt/sda1/]
+[12:54:31] [5][0x10][1][-] - [Source/Generated/SLImpLinuxCmp/SMStartUpModeAppNodeTarget.cpp][79] DoInit() [Startupmode 0]
+[12:54:31] [5][0x10][2][-] - [Source/Generated/SLImpLinuxCmp/SMStartUpModeAppNodeTarget.cpp][80] DoInit() [Usermode 1]
+Main node created!
+***** Application crashed, restarting application! *****
+********************
+Stack trace Log:
+/tmp/core.mainnodecmp: No such file or directory.
+warning: Unknown thread 1.
+warning: Unknown thread 2.
+warning: Unknown thread 3.
+warning: Unknown thread 4.
+warning: Unknown thread 5.
+warning: Unknown thread 6.
+warning: Unknown thread 7.
+warning: Unknown thread 8.
+warning: Unknown thread 9.
+warning: Unknown thread 10.
+warning: Unknown thread 11.
+warning: Unknown thread 12.
+warning: Unknown thread 13.
+warning: Unknown thread 14.
+warning: Unknown thread 15.
+warning: Unknown thread 16.
+warning: Unknown thread 17.
+warning: Unknown thread 18.
+warning: Unknown thread 19.
+warning: Unknown thread 20.
+warning: Unknown thread 21.
+warning: Unknown thread 22.
+warning: Unknown thread 23.
+warning: Unknown thread 24.
+warning: Unknown thread 25.
+warning: Unknown thread 26.
+warning: Unknown thread 27.
+warning: Unknown thread 28.
+warning: Unknown thread 29.
+warning: Unknown thread 30.
+warning: Unknown thread 31.
+warning: Unknown thread 32.
+warning: Unknown thread 33.
+warning: Unknown thread 34.
+warning: Unknown thread 35.
+warning: Unknown thread 36.
+warning: Unknown thread 37.
+warning: Unknown thread 38.
+warning: Unknown thread 39.
+warning: Unknown thread 40.
+warning: Unknown thread 41.
+warning: Unknown thread 42.
+warning: Unknown thread 43.
+warning: Unknown thread 44.
+warning: Unknown thread 45.
+warning: Unknown thread 46.
+warning: Unknown thread 47.
+warning: Unknown thread 48.
+warning: Unknown thread 49.
+warning: Unknown thread 50.
+warning: Unknown thread 51.
+warning: Unknown thread 52.
+warning: Unknown thread 53.
+warning: Unknown thread 54.
+warning: Unknown thread 55.
+warning: Unknown thread 56.
+warning: Unknown thread 57.
+warning: Unknown thread 58.
+warning: Unknown thread 59.
+warning: Unknown thread 60.
+warning: Unknown thread 61.
+warning: Unknown thread 62.
+warning: Unknown thread 63.
+warning: Unknown thread 64.
+********************

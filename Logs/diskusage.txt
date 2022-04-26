@@ -1,0 +1,9 @@
+Filesystem           1K-blocks      Used Available Use% Mounted on
+ubi0:rootfs              92780     19732     73048  21% /
+none                     30312         0     30312   0% /mnt
+tmpfs                    30312        12     30300   0% /tmp
+ubi0:pmm                  7796        68      7296   1% /mnt/persistent
+ubi0:user                12500        68     11756   1% /mnt/user
+ubi0:rootfs              92780     19732     73048  21% /mnt/system
+tmpfs                    30312         4     30308   0% /dev
+/dev/sda1              3780364        84   3780280   0% /mnt/sda1
