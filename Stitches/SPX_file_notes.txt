@@ -1,0 +1,25 @@
+Numbers are signed 16bit big endian
+
+Offset		Datatype		Function
+0x67-0x68	short			Total length of stitch in mm*1000
+0xA0-0xA1	short			Total width of stich in mm*1000
+0xA4-0xA5	short			Maximum width the machine supports (in case of quilt expression 720 = 9mm > 9000)
+
+0xE9-0xEA					FFFF when stitch is left and right of center
+0xEB-0xEC	short			Offset of the whole stitch to the left (negative)
+
+
+0xFC-0xFD	short			Total width of stich in mm*1000
+0xF8-0xF9	short			Total length of stitch in mm*1000
+
+0x10F-0x110	short			Grid resolution in designer (0.125mm > 125)
+0x113-0x114	short			Grid resolution in designer (0.125mm > 125)
+
+0x119-0x11A					FFFF when stitch is left and right of center
+0x11B-0x11C	short			Offset of the stitch to the left (negative)
+0x123		byte			Total number of data points (2 per stitch)
+
+0x124-0x125					Flags for each stitch data point ? Repeats for every added stitch
+0x126-0x127					Same as before
+0x128-0x129					Same as before
+
