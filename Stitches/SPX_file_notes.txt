@@ -1,25 +1,43 @@
 Numbers are signed 16bit big endian
 
-Offset		Datatype		Function
-0x67-0x68	short			Total length of stitch in mm*1000
-0xA0-0xA1	short			Total width of stich in mm*1000
-0xA4-0xA5	short			Maximum width the machine supports (in case of quilt expression 720 = 9mm > 9000)
+Something in the header changes its length (not only the produced with string).
+This can be seen when comparing the offsets from a file created by the stitch creator to a file that is preloaded on the machine.
+Here the stitches start at a different offset for each file instead of the "fixed" 0x122 in the example files i created so far.
 
+Stitch creator on the machine describes is files as: Produced with APF498
+The files that came preloaded on the machine describe themselves as: Produced with VSM_SD library
+
+VMS = https://en.wikipedia.org/wiki/VSM_Group
+
+Offset		Datatype		Function
+
+0x00-0x04	string			Magic string %spx%
+0x0C-0x0D	short			Length of produced with string
+0x0E-?		string			Produced with string (16 bit unicode big endian)
+
+0x67-0x68	short			Total height of stitch pattern in mm*1000
+0xA0-0xA1	short			Total width of stich pattern in mm*1000
+
+0xA4-0xA5	short			Maximum width the machine supports (in case of quilt expression 720 = 9mm > 9000)
 0xE9-0xEA					FFFF when stitch is left and right of center
 0xEB-0xEC	short			Offset of the whole stitch to the left (negative)
 
+0xFC-0xFD	short			Total width of stich pattern in mm*1000
+0xF8-0xF9	short			Total height of stitch pattern in mm*1000
 
-0xFC-0xFD	short			Total width of stich in mm*1000
-0xF8-0xF9	short			Total length of stitch in mm*1000
-
-0x10F-0x110	short			Grid resolution in designer (0.125mm > 125)
-0x113-0x114	short			Grid resolution in designer (0.125mm > 125)
+0x10F-0x110	short			Resolution x axis (0.125mm > 125)
+0x113-0x114	short			Resolution y axis (0.125mm > 125)
 
 0x119-0x11A					FFFF when stitch is left and right of center
-0x11B-0x11C	short			Offset of the stitch to the left (negative)
-0x123		byte			Total number of data points (2 per stitch)
+0x11B-0x11C	short			Offset of the stitches to the left (negative)
 
-0x124-0x125					Flags for each stitch data point ? Repeats for every added stitch
-0x126-0x127					Same as before
-0x128-0x129					Same as before
+0x122-0x123	short			Length of array of the stitches in bytes
+0x124		signed byte		Step count on x axis (relative) from last position to next position
+0x125		signed byte		Step count on y axis (relative) from last position to next position
+0x126		signed byte		Step count on x...
+0x127		signed byte		Step count on y...
+0x128		signed byte		and so on...
+0x129		signed byte		and so on...
 
+
+Step counts can be multiplied with the resolution to get the relative position in mm*1000 from the last stitch
