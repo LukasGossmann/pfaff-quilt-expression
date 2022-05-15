@@ -24,6 +24,13 @@ namespace ScreenshotDecoder
                     if (rawScreenshot.Read(readBuffer, 0, readBuffer.Length) != readBuffer.Length)
                         throw new Exception($"Reading raw image data failed at pixel {pixelCounter}");
 
+                    /*
+                    readBuffer[0] = g1 g0 r5 r4 r3 r2 r1 r0;
+                    readBuffer[1] = b3 b2 b1 b0 g5 g4 g3 g2;
+                    readBuffer[2] = 0  0  0  0  0  0  b5 b4;
+                    readBuffer[3] = 0  0  0  0  0  0  0  0;
+                    */
+
                     writeBuffer[0] = ConvertSixToEightBitColorValue(readBuffer[0] & 0b00111111);
                     writeBuffer[1] = ConvertSixToEightBitColorValue(((readBuffer[0] & 0b11000000) >> 6) | ((readBuffer[1] & 0b00001111) << 2));
                     writeBuffer[2] = ConvertSixToEightBitColorValue(((readBuffer[1] & 0b11110000) >> 4) | ((readBuffer[2] & 0b00000011) << 4));

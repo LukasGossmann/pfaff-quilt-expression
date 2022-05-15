@@ -14,28 +14,29 @@ These offsets are only valid for stitches created with the on machine stitch cea
 Offset		Datatype		Function
 
 0x00-0x04	string			Magic string %spx%
-0x0A-0x0B	short			Length of file in bytes after this value
+0x08-0x0B	int				Length of file in bytes after this value
 0x0C-0x0D	short			Length of produced with string
 0x0E-?		string			Produced with string (16 bit unicode big endian)
-0x3B-0x3C	short			Length of file in bytes after this value
-0x44-0x45	short			Length of something / offset to whatever 01 05 01 is (the value 01 05 01 can be found in all files even those preloaded on the machine)
-0x67-0x68	short			Total height of stitch pattern in mm*1000
-0xA0-0xA1	short			Total width of stitch pattern in mm*1000
-0xA4-0xA5	short			Maximum width the machine supports (in case of quilt expression 720 = 9mm > 9000)
-0xE9-0xEA					FFFF when stitch offset is set negative
-0xEB-0xEC	short			Offset of the whole stitch on the x axis * 1000 (left = negative)
-0xF1		byte			Tapering on start enabled = 3
-0xF2		byte			Tapering on end enabled = 3
-0xF3		byte			Angle for taper on start
-0xF4		byte			Angle for taper on end
+0x39-0x3C	int				Length of file in bytes after this value
+
+0x42-0x45	int				Length of something / offset to whatever 01 05 01 is (the value 01 05 01 can be found in all files even those preloaded on the machine)
+0x65-0x68	int				Total height of stitch pattern in mm*1000
+0x9E-0xA1	int				Total width of stitch pattern in mm*1000
+0xA2-0xA5	int				Maximum width the machine supports (in case of quilt expression 720 = 9mm > 9000)
+
+0xE5-0xE8	int				Number of stitches in single stitch mode (0 = no limit)
+0xE9-0xEC	int				Offset of the whole stitch on the x axis * 1000 (left = negative)
+0xF1		byte			Tapering on start (1 = both 2 = right 3 = left)
+0xF2		byte			Tapering on end (1 = both 2 = right 3 = left)
+0xF3		byte			Angle for taper on start (left = 30, 45, 60; both = 60, 90, 120; right = 30, 45, 60)
+0xF4		byte			Angle for taper on end (left = 30, 45, 60; both = 60, 90, 120; right = 30, 45, 60)
 0xF5		byte			String tension * 10
-0xF8-0xF9	short			Stitch height setting from the sewing mode * 1000
-0xFC-0xFD	short			Stitch width setting from the sewing mode * 1000
-0x10F-0x110	short			Resolution x axis (0.125mm > 125)
-0x113-0x114	short			Resolution y axis (0.125mm > 125)
-0x119-0x11A					FFFF when stitch start position is set negative
-0x11B-0x11C	short			Start position of the first stitch on the x axis * 1000 (left = negative)
-0x122-0x123	short			Length of array of the stitches in bytes
+0xF6-0xF9	int				Stitch height setting from the sewing mode * 1000
+0xFA-0xFD	int				Stitch width setting from the sewing mode * 1000
+0x10D-0x110	int				Resolution x axis (0.125mm > 125)
+0x111-0x114	int				Resolution y axis (0.125mm > 125)
+0x119-0x11C	int				Start position of the first stitch on the x axis * 1000 (left = negative)
+0x120-0x123	int				Length of array of the stitches in bytes
 0x124		signed byte		Step count on x axis (relative) from last position to next position
 0x125		signed byte		Step count on y axis (relative) from last position to next position
 0x126		signed byte		Step count on x...
